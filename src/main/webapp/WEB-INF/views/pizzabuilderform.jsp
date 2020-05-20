@@ -15,7 +15,7 @@
 				<option value="small">Small</option>
 				<option value="medium">Medium</option>
 				<option value="large">Large</option>
-			</select> <label>How many toppings?</label> <input type="text" name="toppings" />
+			</select> <label>How many toppings?</label> <input type="number" name="toppings" min="0" max="10" pattern="[0-9]"/>
 
 			<label>Gluten-Free Crust? ($2.00 extra)</label> 
 			<input type="checkbox" name="glutenfree">
