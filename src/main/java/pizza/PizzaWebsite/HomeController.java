@@ -7,16 +7,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
-	
+
 	@RequestMapping("/")
 	public String homePage() {
-		
+
 		return "index";
 	}
-	
+
 	@RequestMapping("/specialtypizza")
-	public String specialtyPizza(@RequestParam String name, 
-			@RequestParam String price, Model model) {
+	public String specialtyPizza(@RequestParam String name, @RequestParam String price, Model model) {
 		if (name.equals("Meatlovers")) {
 			model.addAttribute("name", name);
 			model.addAttribute("price", price);
@@ -27,39 +26,58 @@ public class HomeController {
 			model.addAttribute("name", name);
 			model.addAttribute("price", price);
 		}
-		
+
 		return "specialtypizza";
 	}
-	
+
 	@RequestMapping("/review")
 	public String review(Model model) {
-		
+
 		return "review";
 	}
-	
+
 	@RequestMapping("/reviewconfirmation")
-	public String reviewConfirmation(Model model) {
-		
+	public String reviewConfirmation(@RequestParam String name, @RequestParam String comment, @RequestParam String star,
+			Model model) {
+		model.addAttribute("name", name);
+		model.addAttribute("comment", comment);
+		model.addAttribute("rating", star);
 		return "reviewconfirmation";
 	}
-	
-	@RequestMapping("/pizzabuilderform")
-	public String pizzaBuilder(Model model) {
-		
 
-		model.addAttribute("message", "Spring in sweet");
-		
+	@RequestMapping("/pizzabuilderform")
+	public String pizzaBuilder() {
 
 		return "pizzabuilderform";
 	}
-	
+
 	@RequestMapping("/pizzabuilderresult")
-	public String pizzaBuilderResult(Model model) {
+	public String pizzaBuilderResult(@RequestParam String size, @RequestParam int toppings,
+			@RequestParam(required = false) boolean glutenfree, @RequestParam String instructions, Model model) {
 		
+		double priceOfPizza = 0;
+		String gluten = "No";
 		
-		model.addAttribute("message", "Spring in sweet");
+		if (size.equals("small")) {
+			priceOfPizza = 7.00 + (toppings * 0.50);
+			model.addAttribute("small", size);
+		} else if (size.equals("medium")) {
+			priceOfPizza = 10.00 + (toppings * 0.50);
+			model.addAttribute("medium", size);
+		} else if (size.equals("large")) {
+			priceOfPizza = 12.00 + (toppings * 0.50);
+			model.addAttribute("large", size);
+		}
+		if (glutenfree == true) {
+			priceOfPizza += 2.00;
+			gluten = "Yes";
+			model.addAttribute("gluten", gluten);
+		}
 		
-		
+		model.addAttribute("gluten", gluten);
+		model.addAttribute("toppings", toppings);
+		model.addAttribute("instructions", instructions);
+		model.addAttribute("total", priceOfPizza);
 		return "pizzabuilderresult";
 	}
 }

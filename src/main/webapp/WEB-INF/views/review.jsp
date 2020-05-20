@@ -11,9 +11,11 @@
 		
 		<h1>Leave a Review</h1>
 		
-		<label>Your Name</label> <input type="text" name="name"/>
+		<label>Your Name</label> 
+		<input type="text" name="name"/>
+		
 		<label>Comment</label>
-		<textarea id="commenttextarea" rows ="4" cols ="50"></textarea>
+		<textarea id="commenttextarea" rows ="4" cols ="50" name="comment"></textarea>
 		<label>Rating</label>
         <div class="rating">
             <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />

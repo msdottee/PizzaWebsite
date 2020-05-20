@@ -19,7 +19,7 @@
 				Pizza</a></li>
 	</ul>
 	<h3>Custom Pizza</h3>
-	<a href="/buildYourOwn">Build Your Own</a>
+	<a href="/pizzabuilderform">Build Your Own</a>
 	<h4>Leave a Review</h4>
 	<a href="/review">Click here to leave a review.</a>
 
