@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +23,11 @@
 			<p><label><b>How many toppings?</b></label> 
 			<input type="number" name="toppings" min="0" max="10" pattern="[0-9]" /> 
 			</p>
+			<ul class="list">
+				<c:forEach var="toppings" items="${toppings}">
+					<li><c:out value="${toppings.getName()}" /></li>
+				</c:forEach>
+			</ul>
 			<p>
 			<input type="checkbox" name="glutenfree">
 			<label><b>Gluten-Free Crust? ($2.00 extra)</b></label> 

@@ -1,9 +1,14 @@
 package pizza.PizzaWebsite;
 
+import java.util.ArrayList;
+
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class HomeController {
@@ -46,8 +51,21 @@ public class HomeController {
 	}
 
 	@RequestMapping("/pizzabuilderform")
-	public String pizzaBuilder() {
-
+	public String pizzaBuilder(Model model) {
+		List<Toppings> toppings = new ArrayList<>();
+		toppings.add(new Toppings("Pepperoni"));
+		toppings.add(new Toppings("Sausage"));
+		toppings.add(new Toppings("Chicken"));
+		toppings.add(new Toppings("Mushroom"));
+		toppings.add(new Toppings("Olive"));
+		toppings.add(new Toppings("Green Pepper"));
+		toppings.add(new Toppings("Onion"));
+		toppings.add(new Toppings("Banana Pepper"));
+		toppings.add(new Toppings("Anchovies"));
+		toppings.add(new Toppings("Pineapple"));
+		
+		model.addAttribute("toppings", toppings);
+		
 		return "pizzabuilderform";
 	}
 
