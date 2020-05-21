@@ -9,6 +9,7 @@
 <link href="/stylereview.css" rel="stylesheet" />
 </head>
 <body>
+<div>
 		<form action="/reviewconfirmation" method="post">
 		
 		<h1>Leave a Review</h1>
@@ -36,5 +37,6 @@
 		
 		
 		</form>
+		</div>
 </body>
 </html>
